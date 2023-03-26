@@ -1,0 +1,34 @@
+Create FakeOS
+
+background
+    icons on the main screen
+menu on the bottom
+    app icons in the center
+    with the bar
+menu on the top
+    settings top left
+    time top right
+
+Steps:
+
+1. background image
+    a. main section
+2. tool bar up top
+    a. header
+3. settings on the tool bar up top
+    a. footer
+4. dock at the bottom
+5. apps on the dock on the bottom
+6. calculator app
+7. gallery app
+8. camera app
+9. voice recorder app
+10. email
+11. chess
+
+
+
+Bonus:
+1. on hover create the zoom in effect on the app ons the dock
+2. app store
+3. as dock gets more populated with apps shrink down as it stretches

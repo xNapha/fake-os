@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.container-tool-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  backdrop-filter: blur(10px);
+  color: white;
+  position: fixed;
+  width: 100%;
+}
+.container-tool-bar .tool-bar {
+  display: flex;
+  flex-direction: row;
+}
+.container-tool-bar .tool-bar__settings {
+  display: flex;
+  flex-direction: row;
+  margin: 1px 10px;
+  gap: 10px;
+}
+.container-tool-bar .tool-bar__utility {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin: 1px 10px;
+  gap: 10px;
+}
+
+.main-screen {
+  background-image: url("../assets/wallpaper/default-day.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto", Helvetica, sans-serif;
+}

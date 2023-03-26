@@ -1,0 +1,8 @@
+@mixin displayFlex($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+}
+@mixin toolBarMarginGap {
+    margin: 1px 10px;
+    gap: 10px;
+}

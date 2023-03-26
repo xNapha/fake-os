@@ -1,0 +1,22 @@
+@use "./../variables";
+@use "./../mixins";
+.container-tool-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    backdrop-filter: blur(10px);
+    color: white;
+    position: fixed;
+    width: 100%;
+    .tool-bar {
+        @include mixins.displayFlex;
+        &__settings {
+            @include mixins.displayFlex;
+            @include mixins.toolBarMarginGap;
+        }
+        &__utility {
+            @include mixins.displayFlex;
+            justify-content: flex-end;
+            @include mixins.toolBarMarginGap;
+        }
+    }
+}

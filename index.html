@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/f00cdf3170.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./scripts/dateTime.js" defer></script>
+        <link rel="stylesheet" href="./styles.css" />
+        <title>MacOS</title>
+    </head>
+    <body>
+        <!-- toolBar houses all the settings for the selected application -->
+        <header class="container-tool-bar">
+            <section class="tool-bar__settings">
+                <!-- icons from font awesome -->
+                <i class="fa-solid fa-apple-whole"></i>
+                <div>Finder</div>
+                <div>File</div>
+                <div>Edit</div>
+                <div>View</div>
+                <div>Go</div>
+                <div>Window</div>
+                <div>Help</div>
+            </section>
+            <section class="tool-bar__utility">
+                <i class="fa-solid fa-battery-full utility__battery"></i>
+                <i class="fa-solid fa-wifi utility__wifi"></i>
+                <i class="fa-solid fa-magnifying-glass utility__search"></i>
+                <i class="fa-solid fa-bars-progress utility__task-manager"></i>
+                <i class="fa-solid fa-face-meh utility__assistant"></i>
+                <div class="utility__clock"></div>
+            </section>
+        </header>
+        <!-- main-screen shows all the applications that are open -->
+        <main class="main-screen"></main>
+        <!-- dock houses all the favourite applications -->
+        <footer class="dock"></footer>
+    </body>
+</html>
