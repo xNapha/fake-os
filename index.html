@@ -8,8 +8,9 @@
             src="https://kit.fontawesome.com/f00cdf3170.js"
             crossorigin="anonymous"
         ></script>
-        <script src="./scripts/dateTime.js" defer></script>
-        <link rel="stylesheet" href="./styles.css" />
+        <script type="module" src="./index.js" defer></script>
+        <script type="module" src="./scripts/chessApp.js" defer></script>
+        <link rel="stylesheet" href="./style.css" />
         <title>MacOS</title>
     </head>
     <body>
@@ -36,8 +37,19 @@
             </section>
         </header>
         <!-- main-screen shows all the applications that are open -->
-        <main class="main-screen"></main>
+        <main class="main-screen">
+            <section class="main-screen__allowed-area"></section>
+        </main>
         <!-- dock houses all the favourite applications -->
-        <footer class="dock"></footer>
+        <footer class="dock">
+            <section class="dock__container">
+                <div>1</div>
+                <div>2</div>
+                <div>3</div>
+                <div>4</div>
+                <div>5</div>
+                <div>Bin</div>
+            </section>
+        </footer>
     </body>
 </html>

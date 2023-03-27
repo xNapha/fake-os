@@ -12,9 +12,6 @@ const currentTime = () => {
     const currTime = new Date().toLocaleTimeString().substring(0, 4);
     const amOrPm = new Date().toLocaleTimeString().substring(8);
 
-    clock.innerHTML = `${day} ${date} ${month} ${currTime} ${amOrPm}`;
+    clock.innerHTML = `<p>${day} ${date} ${month} ${currTime} ${amOrPm}</p>`;
 };
-// run clock function
-currentTime();
-//  run clock function at every 1000 milliseconds
-setInterval(currentTime, 1000);
+export default currentTime;

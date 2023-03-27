@@ -3,6 +3,7 @@
 .container-tool-bar {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: rgba(210, 210, 210, 0.07);
     backdrop-filter: blur(10px);
     color: white;
     position: fixed;
