@@ -62,7 +62,7 @@ export const moveApp = (app) => {
         // // stop app from going past the dock on the bottom of the screen
         const dock = document.querySelector(".dock");
         if (
-            app.getBoundingClientRect().bottom >=
+            app.firstChild.getBoundingClientRect().bottom >=
             dock.getBoundingClientRect().top
         ) {
             app.style.top = dock.getBoundingClientRect().top - 36 + "px";

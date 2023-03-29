@@ -15,28 +15,26 @@
         justify-items: center;
         align-content: center;
         border: 2px solid black;
-        .chess-col {
-            .chess-cell {
-                background-color: blue;
-                width: 45px;
-                height: 45px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                &--black {
-                    background-color: black;
-                }
-                &--white {
-                    background-color: white;
-                }
-                .piece {
-                    font-size: 40px;
-                }
+        .chess-cell {
+            background-color: blue;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &--black {
+                background-color: black;
             }
-            .chess-cell:hover {
-                background-color: blue;
-                cursor: pointer;
+            &--white {
+                background-color: white;
             }
+            .piece {
+                font-size: 40px;
+            }
+        }
+        .chess-cell:hover {
+            background-color: blue;
+            cursor: pointer;
         }
     }
 }
