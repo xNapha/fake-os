@@ -1,0 +1,42 @@
+@use "./../variables";
+@use "./../mixins";
+.chess-app {
+    width: 30rem;
+    height: 30rem;
+}
+.chess-app__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    .main__chess-board {
+        display: grid;
+        grid-template-columns: repeat(8, 45px);
+        justify-items: center;
+        align-content: center;
+        border: 2px solid black;
+        .chess-col {
+            .chess-cell {
+                background-color: blue;
+                width: 45px;
+                height: 45px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                &--black {
+                    background-color: black;
+                }
+                &--white {
+                    background-color: white;
+                }
+                .piece {
+                    font-size: 40px;
+                }
+            }
+            .chess-cell:hover {
+                background-color: blue;
+                cursor: pointer;
+            }
+        }
+    }
+}

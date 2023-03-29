@@ -36,8 +36,7 @@
 .main-screen__allowed-area {
   position: fixed;
   top: 1rem;
-  border: 1px solid white;
-  height: 91.2vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -69,25 +68,23 @@
   color: white;
 }
 
-.allowed-area {
-  position: relative;
-  width: 20rem;
-  height: 20rem;
+.apps {
+  position: absolute;
   background-color: white;
   border-radius: 5px;
 }
-.allowed-area .app--header {
+.apps .app--header {
   display: flex;
   justify-content: space-between;
   padding: 0 5px;
   background-color: rgb(210, 210, 210);
   border-radius: 5px;
 }
-.allowed-area .app--header div {
+.apps .app--header div {
   display: inherit;
   gap: 10px;
 }
-.allowed-area .app--header div * {
+.apps .app--header div * {
   display: inherit;
   justify-content: center;
   align-items: center;
@@ -97,20 +94,60 @@
   font-size: 0.7rem;
   border-radius: 10px;
 }
-.allowed-area .app--header div .expand {
+.apps .app--header div .expand {
   background-color: #36b507;
 }
-.allowed-area .app--header div .minimize {
+.apps .app--header div .minimize {
   background-color: #edea26;
 }
-.allowed-area .app--header div .close {
+.apps .app--header div .close {
   background-color: #eb2121;
 }
-.allowed-area .app--header div *:hover {
+.apps .app--header div *:hover {
   cursor: pointer;
   filter: saturate(40%);
 }
-.allowed-area .app--header:hover {
+.apps .app--header:hover {
+  cursor: pointer;
+}
+
+.chess-app {
+  width: 30rem;
+  height: 30rem;
+}
+
+.chess-app__main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.chess-app__main .main__chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, 45px);
+  justify-items: center;
+  align-content: center;
+  border: 2px solid black;
+}
+.chess-app__main .main__chess-board .chess-col .chess-cell {
+  background-color: blue;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.chess-app__main .main__chess-board .chess-col .chess-cell--black {
+  background-color: black;
+}
+.chess-app__main .main__chess-board .chess-col .chess-cell--white {
+  background-color: white;
+}
+.chess-app__main .main__chess-board .chess-col .chess-cell .piece {
+  font-size: 40px;
+}
+.chess-app__main .main__chess-board .chess-col .chess-cell:hover {
+  background-color: blue;
   cursor: pointer;
 }
 

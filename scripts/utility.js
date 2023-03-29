@@ -1,13 +1,14 @@
 export const createAppContainer = (name) => {
     const appContainer = document.createElement("section");
-    appContainer.classList.add(`allowed-area`);
-    appContainer.classList.add(`allowed-area__${name}`);
+    appContainer.classList.add(`allowed-area__${name.toLowerCase()}`);
+    appContainer.classList.add(`${name.toLowerCase()}`);
+    appContainer.classList.add(`apps`);
 
     const header = document.createElement("div");
-    header.classList.add(`${name}__header`);
+    header.classList.add(`${name.toLowerCase()}__header`);
     header.classList.add(`app--header`);
     header.innerHTML = `
-    <p>${name}<p>
+    <p>${name.split("-")[0]}<p>
     <div>
         <i class="fa-solid fa-up-right-and-down-left-from-center expand"></i>
         <i class="fa-solid fa-window-minimize minimize"></i>
@@ -16,7 +17,7 @@ export const createAppContainer = (name) => {
     `;
 
     const main = document.createElement("div");
-    main.classList.add(`${name}__main`);
+    main.classList.add(`${name.toLowerCase()}__main`);
 
     appContainer.append(header, main);
     return appContainer;
@@ -49,19 +50,23 @@ export const moveApp = (app) => {
         mousePosX = event.clientX;
         mousePosY = event.clientY;
         app.style.left = `${app.offsetLeft - updatedMousePosX}px`;
-        if (app.offsetTop - updatedMousePosY <= 0) {
-            app.style.top = `0px`;
-        } else {
-            app.style.top = `${app.offsetTop - updatedMousePosY}px`;
-        }
+        app.style.top = `${app.offsetTop - updatedMousePosY}px`;
+        // stop app from going past the tool bar on the top of the screen
+        const toolbar = document.querySelector(".container-tool-bar");
         if (
-            app.firstChild.getBoundingClientRect().bottom >=
-            mainScreen.getBoundingClientRect().bottom
+            app.getBoundingClientRect().top <=
+            toolbar.getBoundingClientRect().bottom
         ) {
-            app.style.top =
-                mainScreen.getBoundingClientRect().bottom - 36 + "px";
+            app.style.top = toolbar.getBoundingClientRect().bottom - 20 + "px";
         }
-        // if(app.firstChild.style.bot > mainScreen.clientHeight)
+        // // stop app from going past the dock on the bottom of the screen
+        const dock = document.querySelector(".dock");
+        if (
+            app.getBoundingClientRect().bottom >=
+            dock.getBoundingClientRect().top
+        ) {
+            app.style.top = dock.getBoundingClientRect().top - 36 + "px";
+        }
     };
     // stop app from moving after mouse click is no longer being held
     const removeEventListeners = (event) => {
@@ -70,6 +75,10 @@ export const moveApp = (app) => {
         mainScreen.removeEventListener("mouseup", removeEventListeners);
     };
 
-    app.firstChild.addEventListener("mousedown", getMousePosition);
+    if (app.firstChild) {
+        app.firstChild.addEventListener("mousedown", getMousePosition);
+    } else {
+        app.addEventListener("mousedown", getMousePosition);
+    }
     mainScreen.addEventListener("mouseleave", removeEventListeners);
 };
