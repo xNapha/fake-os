@@ -29,8 +29,12 @@
                 background-color: white;
             }
             .piece {
+                position: absolute;
                 font-size: 40px;
             }
+        }
+        .valid-moves {
+            background-color: yellow;
         }
         .chess-cell:hover {
             background-color: blue;

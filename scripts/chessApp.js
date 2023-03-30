@@ -1,39 +1,35 @@
-import { createAppContainer, moveApp } from "./utility.js";
-import { chessPiecesData } from "./chessPieces.js";
+import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
+import { chessPiecesData } from "../data/chessPieces.js";
+import { board } from "../data/chessBoard.js";
+import { apps } from "../data/appData.js";
 
-const mainScreen = document.querySelector(".main-screen__allowed-area");
-mainScreen.appendChild(createAppContainer("Chess-App"));
-moveApp(document.querySelector(".allowed-area__chess-app"));
+export const openChessApp = (chessPiecesData, board) => {
+    const mainScreen = document.querySelector(".main-screen__allowed-area");
+    mainScreen.appendChild(createAppContainer("Chess-App"));
+    moveApp(document.querySelector(".allowed-area__chess-app"));
+    appHeaderControl(
+        document.querySelector(".allowed-area__chess-app"),
+        apps[0]
+    );
 
-const chessMain = document.querySelector(".chess-app__main");
-// create a board container to hold the chess pieces
-const boardCon = document.createElement("div");
-boardCon.classList.add("main");
-boardCon.classList.add("main__chess-board");
+    const chessMain = document.querySelector(".chess-app__main");
+    // create a board container to hold the chess pieces
+    const boardCon = document.createElement("div");
+    boardCon.classList.add("main");
+    boardCon.classList.add("main__chess-board");
 
-chessMain.append(boardCon);
-
-const boardArr = [
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-    [{}, {}, {}, {}, {}, {}, {}, {}],
-];
-
-let heldPiece = false;
+    chessMain.append(boardCon);
+    renderBoard(populateBoardArr(chessPiecesData, board));
+};
 
 // render board from an array
-const renderBoard = (arr) => {
+const renderBoard = (boardObject) => {
     const boardCon = document.querySelector(".main__chess-board");
-    for (let x = 0; x < arr.length; x++) {
-        for (let y = 0; y < arr[x].length; y++) {
-            const div = arr[x][y].html;
-            if (arr[x][y].piece.display) {
-                div.innerHTML = arr[x][y].piece.display;
+    for (let x = 0; x < boardObject.boardArr.length; x++) {
+        for (let y = 0; y < boardObject.boardArr[x].length; y++) {
+            const div = boardObject.boardArr[y][x].html;
+            if (boardObject.boardArr[y][x].piece) {
+                div.innerHTML = boardObject.boardArr[y][x].piece.display;
             } else {
                 div.innerHTML = "";
             }
@@ -41,147 +37,110 @@ const renderBoard = (arr) => {
         }
     }
 };
-
 //  render board after each move
-const populateBoardArr = (chessPiecesData, board, movePiece) => {
-    const fillCell = (chessPiecesData, board) => {
-        let newBoard = board;
+const populateBoardArr = (chessPiecesData, board) => {
+    const fillCell = (board) => {
         // used to alternate the checkered board pattern
         let isAlternating = false;
-
         for (let x = 0; x < 8; x++) {
             for (let y = 0; y < 8; y++) {
-                const html = document.createElement("div");
-                html.classList.add("chess-board__chess-cell");
-                html.classList.add("chess-cell");
-                html.addEventListener("mousedown", (e) => {
-                    e.preventDefault();
-                    movePiece(x, y, board);
-                });
-                html.addEventListener("mouseup", (e) => {
-                    e.preventDefault();
-                    placePiece(x, y, board);
-                });
-                // used to create a checkered board pattern
-                if (
-                    (y % 2 === 0 && isAlternating) ||
-                    (y % 2 !== 0 && !isAlternating)
-                ) {
-                    html.classList.add("chess-cell--black");
-                } else {
-                    html.classList.add("chess-cell--white");
-                }
-                const cellObject = {
-                    html: html,
-                    piece: false,
-                    position: { x: x, y: y },
+                board.boardArr[x][y] = {
+                    ...createCellObject(
+                        createHTML(x, y, board, isAlternating),
+                        x,
+                        y
+                    ),
                 };
-                newBoard[x][y] = { ...cellObject };
             }
             isAlternating = !isAlternating;
         }
-        return newBoard;
+        return board;
     };
-    //place pawns on the board
-    const placePawns = (chessPiecesData, board) => {
-        let newBoard = [];
-        for (const player in chessPiecesData) {
-            newBoard = chessPiecesData[player].pawns.reduce((acc, piece) => {
-                acc[piece.position.y][piece.position.x].piece = { ...piece };
-                return acc;
-            }, board);
-        }
-        return newBoard;
-    };
-    //place knights on the board
-    const placeKnights = (chessPiecesData, board) => {
-        let newBoard = [];
-        for (const player in chessPiecesData) {
-            newBoard = chessPiecesData[player].knights.reduce((acc, piece) => {
-                acc[piece.position.y][piece.position.x].piece = { ...piece };
-                return acc;
-            }, board);
-        }
-        return newBoard;
-    };
-    //place bishops on the board
-    const placeBishops = (chessPiecesData, board) => {
-        let newBoard = [];
-        for (const player in chessPiecesData) {
-            newBoard = chessPiecesData[player].bishops.reduce((acc, piece) => {
-                acc[piece.position.y][piece.position.x].piece = { ...piece };
-                return acc;
-            }, board);
-        }
-        return newBoard;
-    };
-    //place rooks on the board
-    const placeRooks = (chessPiecesData, board) => {
-        let newBoard = [];
-        for (const player in chessPiecesData) {
-            newBoard = chessPiecesData[player].rooks.reduce((acc, piece) => {
-                acc[piece.position.y][piece.position.x].piece = { ...piece };
-                return acc;
-            }, board);
-        }
-        return newBoard;
-    };
-    //place queenss on the board
-    const placeQueens = (chessPiecesData, board) => {
-        for (const player in chessPiecesData) {
-            const queen = chessPiecesData[player].queen;
-            board[queen.position.y][queen.position.x].piece = { ...queen };
+    const piecesOnBoard = (chessPiecesData, board) => {
+        for (let i = 0; i < chessPiecesData.length; i++) {
+            const piece = chessPiecesData[i];
+            const position = piece.position;
+            board.boardArr[position.x][position.y].piece = {
+                ...piece,
+            };
         }
         return board;
     };
-    //place kings on the board
-    const placeKings = (chessPiecesData, board) => {
-        for (const player in chessPiecesData) {
-            const king = chessPiecesData[player].king;
-            board[king.position.y][king.position.x].piece = { ...king };
-        }
-        return board;
-    };
-    const placePiecesArr = [
-        fillCell,
-        placeBishops,
-        placeKings,
-        placeKnights,
-        placePawns,
-        placeQueens,
-        placeRooks,
-    ];
-    const finaliseBoard = (chessPiecesData, board, placePiecesArr) => {
-        let newBoard = board;
-        for (let i = 0; i < placePiecesArr.length; i++) {
-            newBoard = placePiecesArr[i](chessPiecesData, board);
-        }
-        return newBoard;
-    };
-    return finaliseBoard(chessPiecesData, board, placePiecesArr);
+    return piecesOnBoard(chessPiecesData, fillCell(board));
 };
-// check position on board if there is a piece save location and then place piece at the next place clicked
-const movePiece = (x, y, boardArr) => {
-    const isTrue = boardArr[x][y].piece;
-    if (isTrue) {
-        heldPiece = boardArr[x][y].piece;
-        boardArr[x][y].piece = false;
+
+const createHTML = (x, y, board, isAlternating) => {
+    const html = document.createElement("div");
+    html.classList.add("chess-board__chess-cell");
+    html.classList.add("chess-cell");
+    html.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        holdPiece(x, y, board);
+    });
+    html.addEventListener("mouseup", (e) => {
+        e.preventDefault();
+        placePiece(x, y, board);
+    });
+    // used to create a checkered board pattern
+    if ((y % 2 === 0 && isAlternating) || (y % 2 !== 0 && !isAlternating)) {
+        html.classList.add("chess-cell--black");
+    } else {
+        html.classList.add("chess-cell--white");
     }
-    renderBoard(boardArr);
+    return html;
+};
+
+const createCellObject = (html, x, y) => {
+    const cellObject = {
+        html: html,
+        piece: false,
+        position: { x: x, y: y },
+    };
+    return cellObject;
+};
+
+// check position on board if there is a piece save location and then place piece at the next place clicked
+const holdPiece = (x, y, board) => {
+    const isTrue = board.boardArr[x][y].piece;
+    if (isTrue) {
+        board.heldPiece = board.boardArr[x][y].piece;
+        board.boardArr[x][y].piece = false;
+    }
+    // validMoves(board.heldPiece, board);
+    return board, renderBoard(board);
 };
 
 // on mouse up place piece that is in hand
-const placePiece = (x, y, boardArr) => {
+const placePiece = (x, y, board) => {
+    const heldPiece = board.heldPiece;
+    console.log(heldPiece.position, "held piece");
     if (heldPiece) {
-        console.log("test");
-        boardArr[x][y].piece = heldPiece;
+        // console.log(validMoves(heldPiece, board), "valid");
+        board.boardArr[x][y].piece = heldPiece;
+        board.boardArr[x][y].piece.position = { x: x, y: y };
     }
-    heldPiece = false;
-    renderBoard(boardArr);
+    board.heldPiece = false;
+    return board, renderBoard(board);
 };
 
-renderBoard(populateBoardArr(chessPiecesData, boardArr, movePiece));
+// const validMoves = (piece, board) => {
+//     // valid pawn moves, 1 infront if space is empty or 1 diagonal if enemy is there
+//     if (piece.type === "pawn" && piece.isWhite) {
+//         const whitePawn =
+//             board.boardArr[piece.position.x][piece.position.y + 1];
+//         highlightMove(whitePawn.html);
+//         return whitePawn.position;
+//     } else if (piece.type === "pawn" && !piece.isWhite) {
+//         const blackPawn =
+//             board.boardArr[piece.position.x][piece.position.y - 1];
+//         highlightMove(blackPawn.html);
+//         return blackPawn.position;
+//     }
+// };
 
+const highlightMove = (cellHTML) => {
+    return cellHTML.classList.toggle("valid-moves");
+};
 /*
 different types of chess pieces
 pawn

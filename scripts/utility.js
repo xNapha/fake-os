@@ -8,19 +8,45 @@ export const createAppContainer = (name) => {
     header.classList.add(`${name.toLowerCase()}__header`);
     header.classList.add(`app--header`);
     header.innerHTML = `
-    <p>${name.split("-")[0]}<p>
+    <p>${name.split("-")[0]}</p>
     <div>
         <i class="fa-solid fa-up-right-and-down-left-from-center expand"></i>
         <i class="fa-solid fa-window-minimize minimize"></i>
         <i class="fa-solid fa-xmark close"></i>
     </div>
     `;
-
     const main = document.createElement("div");
     main.classList.add(`${name.toLowerCase()}__main`);
 
     appContainer.append(header, main);
     return appContainer;
+};
+export const appHeaderControl = (app, data) => {
+    const minimize = document.querySelectorAll(".minimize");
+    minimize.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            data.isMinimized = !data.isMinimized;
+            app.classList.add("hidden");
+        });
+    });
+    const close = document.querySelectorAll(".close");
+    close.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            data.isOpen = !data.isOpen;
+            app.remove();
+        });
+    });
+
+    const expand = document.querySelectorAll(".expand");
+    expand.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            app.classList.toggle("expand");
+            console.log(app.classList);
+        });
+    });
 };
 
 export const moveApp = (app) => {
