@@ -1,5 +1,5 @@
 import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
-import { apps } from "../data/appData.js";
+import { apps } from "./../data/appData.js";
 
 export const openChessApp = (chessPiecesData, board) => {
     const mainScreen = document.querySelector(".main-screen__allowed-area");
