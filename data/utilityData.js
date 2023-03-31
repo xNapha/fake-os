@@ -2,13 +2,13 @@ export const utilityData = [
     {
         id: 1,
         name: "battery",
-        iconSrc: "[[./../assets/utility/battery-full-solid.svg]]",
+        iconSrc: "./../assets/utility/battery-full-solid.svg",
         classList: ["utility", "utility__battery"],
     },
     {
         id: 2,
         name: "wifi",
-        iconSrc: ".[[/../assets/utility/wifi-solid.svg]]",
+        iconSrc: "./../assets/utility/wifi-solid.svg",
         classList: ["utility", "utility__wifi"],
     },
     {
