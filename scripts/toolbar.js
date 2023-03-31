@@ -1,4 +1,3 @@
-import { toolBarData } from "../data/toolBarData.js";
 export const renderToolBar = (data) => {
     const toolBar = document.querySelector(".tool-bar__settings");
     data.forEach((setting, index) => {
