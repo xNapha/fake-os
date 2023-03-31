@@ -9,7 +9,9 @@ currentTime();
 setInterval(currentTime, 1000);
 
 try {
-    addToDock(apps);
+    apps.forEach((app) => {
+        addToDock(app);
+    });
 } catch (err) {
     console.warn(err);
 }

@@ -1,9 +1,9 @@
 import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
 import { apps } from "./../data/appData.js";
 
-export const openChessApp = (chessPiecesData, board) => {
+export const openChessApp = (board) => {
     const mainScreen = document.querySelector(".main-screen__allowed-area");
-    mainScreen.appendChild(createAppContainer("Chess-App"));
+    mainScreen.appendChild(createAppContainer("chess-app"));
     moveApp(document.querySelector(".allowed-area__chess-app"));
     appHeaderControl(
         document.querySelector(".allowed-area__chess-app"),
@@ -17,7 +17,7 @@ export const openChessApp = (chessPiecesData, board) => {
     boardCon.classList.add("main__chess-board");
 
     chessMain.append(boardCon);
-    renderBoard(populateBoardArr(chessPiecesData, board));
+    renderBoard(populateBoardArr(board.pieces, board));
 };
 
 // render board from an array
@@ -119,7 +119,6 @@ const holdPiece = (x, y, board) => {
 // on mouse up place piece that is in hand
 const placePiece = (x, y, board) => {
     const heldPiece = board.heldPiece;
-    console.log(heldPiece.position, "held piece");
     if (heldPiece) {
         // console.log(validMoves(heldPiece, board), "valid");
         board.boardArr[x][y].piece = heldPiece;

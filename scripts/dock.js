@@ -1,29 +1,19 @@
-import { chessPiecesData } from "./../data/chessPieces.js";
-import { board } from "./../data/chessBoard.js";
 // render app icons in dock
-
-export const addToDock = (apps) => {
+export const addToDock = (app) => {
     const dockCon = document.querySelector(".dock__container");
-
-    for (let i = 0; i < apps.length; i++) {
-        const appIconContainer = document.createElement("div");
-        appIconContainer.addEventListener("click", (e) => {
-            e.preventDefault();
-            if (!apps[i].isOpen) {
-                //open app if closed
-                apps[i].script(chessPiecesData, board);
-                apps[i].isOpen = !apps[i].isOpen;
-            } else if (apps[i].isMinimized || apps[i].isOpen) {
-                // show app if miinimized
-                document
-                    .querySelector(`.${apps[i].name}`)
-                    .classList.toggle("hidden");
-                apps[i].isMinimized = !apps[i].isMinimized;
-            }
-        });
-        appIconContainer.innerHTML = `<img src="${
-            apps[i].iconSrc
-        }" class="${apps[i].classList.join(" ")}">`;
-        dockCon.append(appIconContainer);
-    }
+    const appIconContainer = document.createElement("div");
+    appIconContainer.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (!document.querySelector(".chess-app")) {
+            app.script(app.data);
+        } else if (app.isMinimized || document.querySelector(".chess-app")) {
+            // show app if miinimized
+            document.querySelector(`.${app.name}`).classList.toggle("hidden");
+            app.isMinimized = !app.isMinimized;
+        }
+    });
+    appIconContainer.innerHTML = `<img src="${
+        app.iconSrc
+    }" class="${app.classList.join(" ")}">`;
+    dockCon.append(appIconContainer);
 };
