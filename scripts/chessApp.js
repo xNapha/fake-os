@@ -1,6 +1,4 @@
 import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
-import { chessPiecesData } from "../data/chessPieces.js";
-import { board } from "../data/chessBoard.js";
 import { apps } from "../data/appData.js";
 
 export const openChessApp = (chessPiecesData, board) => {
