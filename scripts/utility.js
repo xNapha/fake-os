@@ -21,6 +21,7 @@ export const createAppContainer = (name) => {
     appContainer.append(header, main);
     return appContainer;
 };
+
 export const appHeaderControl = (app, data) => {
     const minimize = document.querySelectorAll(".minimize");
     minimize.forEach((btn) => {

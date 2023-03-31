@@ -15,15 +15,28 @@
 .container-tool-bar .tool-bar__settings {
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin: 1px 10px;
   gap: 10px;
 }
-.container-tool-bar .tool-bar__utility {
+.container-tool-bar .tool-bar__settings .settings--icon {
+  height: 1rem;
+  width: 1rem;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(82deg) brightness(105%) contrast(103%);
+}
+.container-tool-bar .tool-bar__settings div:hover {
+  cursor: pointer;
+  filter: brightness(50%);
+}
+.container-tool-bar .tool-bar__settings .container-tool-bar .tool-bar__utility {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   margin: 1px 10px;
   gap: 10px;
+}
+.container-tool-bar .tool-bar__drop-down-menu {
+  position: absolute;
 }
 
 .main-screen {
@@ -59,28 +72,31 @@
   border: 2px solid black;
 }
 .chess-app__main .main__chess-board .chess-cell {
-  background-color: blue;
   width: 45px;
   height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.chess-app__main .main__chess-board .chess-cell--black {
-  background-color: black;
+.chess-app__main .main__chess-board .chess-cell--brown {
+  background-color: brown;
 }
-.chess-app__main .main__chess-board .chess-cell--white {
-  background-color: white;
+.chess-app__main .main__chess-board .chess-cell--biege {
+  background-color: #f7d679;
 }
 .chess-app__main .main__chess-board .chess-cell .piece {
   position: absolute;
-  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+.chess-app__main .main__chess-board .chess-cell .piece--white {
+  filter: invert(94%) sepia(14%) saturate(604%) hue-rotate(314deg) brightness(108%) contrast(94%);
 }
 .chess-app__main .main__chess-board .valid-moves {
   background-color: yellow;
 }
 .chess-app__main .main__chess-board .chess-cell:hover {
-  background-color: blue;
+  filter: brightness(80%);
   cursor: pointer;
 }
 
@@ -111,13 +127,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.dock__container div .dock__icon {
-  font-size: 30px;
-  padding: 5px;
   border-radius: 12px;
 }
-.dock__container div .dock__icon:hover {
+.dock__container div .app__icons {
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+}
+.dock__container div:hover {
   background-color: rgba(210, 210, 210, 0.07);
   cursor: pointer;
 }

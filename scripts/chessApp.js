@@ -28,8 +28,16 @@ const renderBoard = (boardObject) => {
     for (let x = 0; x < boardObject.boardArr.length; x++) {
         for (let y = 0; y < boardObject.boardArr[x].length; y++) {
             const div = boardObject.boardArr[y][x].html;
-            if (boardObject.boardArr[y][x].piece) {
-                div.innerHTML = boardObject.boardArr[y][x].piece.display;
+            if (
+                boardObject.boardArr[y][x].piece &&
+                boardObject.boardArr[y][x].piece.isWhite
+            ) {
+                div.innerHTML = `<img src ="${boardObject.boardArr[y][x].piece.iconSrc}" class="piece piece--white"/>`;
+            } else if (
+                boardObject.boardArr[y][x].piece &&
+                !boardObject.boardArr[y][x].piece.isWhite
+            ) {
+                div.innerHTML = `<img src ="${boardObject.boardArr[y][x].piece.iconSrc}" class="piece piece--black"/>`;
             } else {
                 div.innerHTML = "";
             }
@@ -83,9 +91,9 @@ const createHTML = (x, y, board, isAlternating) => {
     });
     // used to create a checkered board pattern
     if ((y % 2 === 0 && isAlternating) || (y % 2 !== 0 && !isAlternating)) {
-        html.classList.add("chess-cell--black");
+        html.classList.add("chess-cell--brown");
     } else {
-        html.classList.add("chess-cell--white");
+        html.classList.add("chess-cell--biege");
     }
     return html;
 };

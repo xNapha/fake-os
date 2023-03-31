@@ -21,7 +21,9 @@ export const addToDock = (apps) => {
                 apps[i].isMinimized = !apps[i].isMinimized;
             }
         });
-        appIconContainer.innerHTML = apps[i].icon;
+        appIconContainer.innerHTML = `<img src="${
+            apps[i].iconSrc
+        }" class="${apps[i].classList.join(" ")}">`;
         dockCon.append(appIconContainer);
     }
 };
