@@ -1,7 +1,7 @@
 import currentTime from "./scripts/dateTime.js";
 import { apps } from "./data/appData.js";
 import { addToDock } from "./scripts/dock.js";
-import { renderToolBar } from "./scripts/toolBar.js";
+import { renderToolBar } from "./scripts/toolbar.js";
 import { toolBarData } from "./data/toolBarData.js";
 // run clock function
 currentTime();
