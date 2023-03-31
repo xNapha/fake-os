@@ -1,5 +1,5 @@
-import { chessPiecesData } from "../data/chessPieces.js";
-import { board } from "../data/chessBoard.js";
+import { chessPiecesData } from "./../data/chessPieces.js";
+import { board } from "./../data/chessBoard.js";
 // render app icons in dock
 
 export const addToDock = (apps) => {
