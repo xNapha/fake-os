@@ -3,6 +3,11 @@
 @use "./styles/chess.scss";
 @use "./styles/dock.scss";
 @use "./styles/app.scss";
+@use "./styles/finder.scss";
+@use "./styles/camera.scss";
+@use "./styles/bin.scss";
+@use "./styles/gallery.scss";
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 * {
     margin: 0px;

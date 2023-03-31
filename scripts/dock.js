@@ -4,9 +4,9 @@ export const addToDock = (app) => {
     const appIconContainer = document.createElement("div");
     appIconContainer.addEventListener("click", (e) => {
         e.preventDefault();
-        if (!document.querySelector(".chess-app")) {
+        if (!document.querySelector(`.${app.name}`)) {
             app.script(app.data);
-        } else if (app.isMinimized || document.querySelector(".chess-app")) {
+        } else if (app.isMinimized || document.querySelector(`.${app.name}`)) {
             // show app if miinimized
             document.querySelector(`.${app.name}`).classList.toggle("hidden");
             app.isMinimized = !app.isMinimized;

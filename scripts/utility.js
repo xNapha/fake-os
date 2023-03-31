@@ -10,9 +10,9 @@ export const createAppContainer = (name) => {
     header.innerHTML = `
     <p>${name.split("-")[0]}</p>
     <div>
-        <i class="fa-solid fa-up-right-and-down-left-from-center expand"></i>
-        <i class="fa-solid fa-window-minimize minimize"></i>
-        <i class="fa-solid fa-xmark close"></i>
+        <i class="fa-solid fa-up-right-and-down-left-from-center expand expand--${name}"></i>
+        <i class="fa-solid fa-window-minimize minimize minimize--${name}"></i>
+        <i class="fa-solid fa-xmark close close--${name}"></i>
     </div>
     `;
     const main = document.createElement("div");
@@ -23,7 +23,7 @@ export const createAppContainer = (name) => {
 };
 
 export const appHeaderControl = (app, data) => {
-    const minimize = document.querySelectorAll(".minimize");
+    const minimize = document.querySelectorAll(`.minimize--${data.name}`);
     minimize.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -31,7 +31,7 @@ export const appHeaderControl = (app, data) => {
             app.classList.add("hidden");
         });
     });
-    const close = document.querySelectorAll(".close");
+    const close = document.querySelectorAll(`.close--${data.name}`);
     close.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -40,12 +40,11 @@ export const appHeaderControl = (app, data) => {
         });
     });
 
-    const expand = document.querySelectorAll(".expand");
+    const expand = document.querySelectorAll(`.expand--${data.name}`);
     expand.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            app.classList.toggle("expand");
-            console.log(app.classList);
+            app.classList.toggle("expand-app");
         });
     });
 };

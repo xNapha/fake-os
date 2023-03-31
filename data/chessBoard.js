@@ -1,5 +1,5 @@
-export const board = {
-    boardArr: [
+const chess = {
+    board: [
         [{}, {}, {}, {}, {}, {}, {}, {}],
         [{}, {}, {}, {}, {}, {}, {}, {}],
         [{}, {}, {}, {}, {}, {}, {}, {}],
@@ -310,3 +310,5 @@ export const board = {
         },
     ],
 };
+
+export default chess;

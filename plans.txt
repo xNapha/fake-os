@@ -19,12 +19,11 @@ Steps:
     a. footer
 4. dock at the bottom
 5. apps on the dock on the bottom
-6. calculator app
 7. gallery app
 8. camera app
-9. voice recorder app
-10. email
 11. chess
+12. bin
+13. finder
 
 
 
