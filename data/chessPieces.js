@@ -6,7 +6,7 @@ export const chessPiecesData = [
         position: { x: 0, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ export const chessPiecesData = [
         position: { x: 1, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 3,
@@ -24,7 +24,7 @@ export const chessPiecesData = [
         position: { x: 2, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 4,
@@ -33,7 +33,7 @@ export const chessPiecesData = [
         position: { x: 3, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 5,
@@ -42,7 +42,7 @@ export const chessPiecesData = [
         position: { x: 4, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 6,
@@ -51,7 +51,7 @@ export const chessPiecesData = [
         position: { x: 5, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 7,
@@ -60,7 +60,7 @@ export const chessPiecesData = [
         position: { x: 6, y: 1 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 8,
@@ -70,7 +70,7 @@ export const chessPiecesData = [
         movement: 1,
         isQueen: false,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
 
     {
@@ -80,7 +80,7 @@ export const chessPiecesData = [
         position: { x: 1, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-knight-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-knight-solid.svg",
     },
     {
         id: 10,
@@ -89,7 +89,7 @@ export const chessPiecesData = [
         position: { x: 6, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-knight-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-knight-solid.svg",
     },
 
     {
@@ -99,7 +99,7 @@ export const chessPiecesData = [
         position: { x: 2, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-bishop-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-bishop-solid.svg",
     },
     {
         id: 12,
@@ -108,7 +108,7 @@ export const chessPiecesData = [
         position: { x: 5, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-bishop-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-bishop-solid.svg",
     },
 
     {
@@ -118,7 +118,7 @@ export const chessPiecesData = [
         position: { x: 0, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-rook-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-rook-solid.svg",
     },
     {
         id: 14,
@@ -127,7 +127,7 @@ export const chessPiecesData = [
         position: { x: 7, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-rook-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-rook-solid.svg",
     },
 
     {
@@ -137,7 +137,7 @@ export const chessPiecesData = [
         position: { x: 3, y: 0 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-queen-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-queen-solid.svg",
     },
     {
         id: 16,
@@ -146,7 +146,7 @@ export const chessPiecesData = [
         position: { x: 4, y: 0 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-king-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-king-solid.svg",
     },
 
     {
@@ -156,7 +156,7 @@ export const chessPiecesData = [
         position: { x: 0, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 18,
@@ -165,7 +165,7 @@ export const chessPiecesData = [
         position: { x: 1, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 19,
@@ -174,7 +174,7 @@ export const chessPiecesData = [
         position: { x: 2, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 20,
@@ -183,7 +183,7 @@ export const chessPiecesData = [
         position: { x: 3, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 21,
@@ -192,7 +192,7 @@ export const chessPiecesData = [
         position: { x: 4, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 22,
@@ -201,7 +201,7 @@ export const chessPiecesData = [
         position: { x: 5, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 23,
@@ -210,7 +210,7 @@ export const chessPiecesData = [
         position: { x: 6, y: 6 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 24,
@@ -220,7 +220,7 @@ export const chessPiecesData = [
         movement: 1,
         isQueen: false,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-pawn-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-pawn-solid.svg",
     },
     {
         id: 25,
@@ -229,7 +229,7 @@ export const chessPiecesData = [
         position: { x: 1, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-knight-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-knight-solid.svg",
     },
     {
         id: 26,
@@ -238,7 +238,7 @@ export const chessPiecesData = [
         position: { x: 6, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-knight-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-knight-solid.svg",
     },
     {
         id: 272,
@@ -247,7 +247,7 @@ export const chessPiecesData = [
         position: { x: 2, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-bishop-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-bishop-solid.svg",
     },
     {
         id: 28,
@@ -256,7 +256,7 @@ export const chessPiecesData = [
         position: { x: 5, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-bishop-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-bishop-solid.svg",
     },
     {
         id: 29,
@@ -265,7 +265,7 @@ export const chessPiecesData = [
         position: { x: 0, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-rook-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-rook-solid.svg",
     },
     {
         id: 30,
@@ -274,7 +274,7 @@ export const chessPiecesData = [
         position: { x: 7, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-rook-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-rook-solid.svg",
     },
     {
         id: 31,
@@ -283,7 +283,7 @@ export const chessPiecesData = [
         position: { x: 3, y: 7 },
         movement: {},
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-queen-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-queen-solid.svg",
     },
     {
         id: 32,
@@ -292,6 +292,6 @@ export const chessPiecesData = [
         position: { x: 4, y: 7 },
         movement: 1,
         isAlive: true,
-        iconSrc: "./../assets/chess-icons/chess-king-solid.svg",
+        iconSrc: "./assets/chess-icons/chess-king-solid.svg",
     },
 ];

@@ -3,7 +3,7 @@ export const toolBarData = [
         id: 0,
         name: "system",
         classList: ["tool-bar__settings", "settings", "settings--icon"],
-        iconSrc: "./../fake-os/assets/toolBar/apple-whole-solid.svg",
+        iconSrc: "./assets/toolBar/apple-whole-solid.svg",
     },
     {
         id: 1,
