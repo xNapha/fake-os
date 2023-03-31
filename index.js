@@ -8,6 +8,14 @@ currentTime();
 //  run clock function at every 1000 milliseconds
 setInterval(currentTime, 1000);
 
-addToDock(apps);
+try {
+    addToDock(apps);
+} catch (err) {
+    console.warn(err);
+}
 
-renderToolBar(toolBarData);
+try {
+    renderToolBar(toolBarData);
+} catch (err) {
+    console.warn(err);
+}

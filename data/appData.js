@@ -10,7 +10,7 @@ export const apps = [
         name: "finder",
         isOpen: false,
         isMinimized: false,
-        iconSrc: `./../fake-os/assets/folder-solid.svg`,
+        iconSrc: `/fake-os/assets/folder-solid.svg`,
         script: openFinderApp,
         classList: ["app__icons"],
         toolBar: [],
