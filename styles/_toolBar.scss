@@ -25,7 +25,7 @@
                 filter: brightness(50%);
             }
         }
-        &__settings &__utility {
+        &__utility {
             @include mixins.displayFlex;
             justify-content: flex-end;
             @include mixins.toolBarMarginGap;
