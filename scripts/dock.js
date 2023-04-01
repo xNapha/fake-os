@@ -9,6 +9,7 @@ export const addToDock = (app) => {
         } else if (app.isMinimized || document.querySelector(`.${app.name}`)) {
             // show app if miinimized
             document.querySelector(`.${app.name}`).classList.toggle("hidden");
+            document.querySelector(`.${app.name}`).style.zIndex = 0;
             app.isMinimized = !app.isMinimized;
         }
     });

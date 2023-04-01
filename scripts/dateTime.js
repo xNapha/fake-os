@@ -9,7 +9,7 @@ const currentTime = () => {
     const date = currDateArr[2];
     const month = currDateArr[3];
     // obtain current time
-    const currTime = new Date().toLocaleTimeString().substring(0, 4);
+    const currTime = new Date().toLocaleTimeString().substring(0, 5);
     const amOrPm = new Date().toLocaleTimeString().substring(8);
 
     clock.innerHTML = `<p>${day} ${date} ${month} ${currTime} ${amOrPm}</p>`;

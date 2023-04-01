@@ -27,6 +27,7 @@ export const appHeaderControl = (app, data) => {
     minimize.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
+            document.querySelector(`.${data.name}`).style.zIndex = 0;
             data.isMinimized = !data.isMinimized;
             app.classList.add("hidden");
         });
@@ -44,7 +45,10 @@ export const appHeaderControl = (app, data) => {
     expand.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
+            app.style.removeProperty("top");
+            app.style.removeProperty("left");
             app.classList.toggle("expand-app");
+            app.classList.toggle(`${data.name}`);
         });
     });
 };
@@ -62,6 +66,8 @@ export const moveApp = (app) => {
         event.preventDefault();
         mousePosX = event.clientX;
         mousePosY = event.clientY;
+        app.style.zIndex++;
+        app.style.zIndex++;
         // initiate capturing mouse location on mouse move
 
         mainScreen.addEventListener("mousemove", updateMousePosition);
@@ -75,6 +81,7 @@ export const moveApp = (app) => {
         updatedMousePosY = mousePosY - event.clientY;
         mousePosX = event.clientX;
         mousePosY = event.clientY;
+
         app.style.left = `${app.offsetLeft - updatedMousePosX}px`;
         app.style.top = `${app.offsetTop - updatedMousePosY}px`;
         // stop app from going past the tool bar on the top of the screen
@@ -97,6 +104,7 @@ export const moveApp = (app) => {
     // stop app from moving after mouse click is no longer being held
     const removeEventListeners = (event) => {
         event.preventDefault();
+        app.style.zIndex--;
         mainScreen.removeEventListener("mousemove", updateMousePosition);
         mainScreen.removeEventListener("mouseup", removeEventListeners);
     };
