@@ -22,7 +22,7 @@ export const replaceGalleryImage = (photoInfo) => {
 };
 
 const catPhoto = async (galleryMain, photoInfo) => {
-    const json = await fetch(`https://api.thecatapi.com/v1/images/search`);
+    const json = await fetch(photoInfo.api);
     const response = await json.json();
     galleryMain.innerHTML = `<img src="${
         response[0].url

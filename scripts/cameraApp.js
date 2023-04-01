@@ -10,12 +10,5 @@ export const openCameraApp = (cam) => {
         apps[2]
     );
 
-    const webCamMain = document.querySelector(".camera-app__main");
-    // create a webCam container
-    const webCamCon = document.createElement("div");
-    webCamCon.classList.add("main");
-    webCamCon.classList.add("main__camera");
-
-    webCamMain.append(webCamCon);
     // renderwebCam(webCam);
 };
