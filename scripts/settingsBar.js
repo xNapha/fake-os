@@ -48,8 +48,8 @@ const dropDown = (element, index) => {
                     ".allowed-area__specs"
                 );
                 moveApp(specsInfo);
-                appHeaderControl(specsInfo, computerSpecs);
-                openComputerSpecs(computerSpecs);
+                appHeaderControl(specsInfo, "specs");
+                openComputerSpecs("specs");
             }
         });
 
