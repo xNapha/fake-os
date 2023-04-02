@@ -1,2 +1,2 @@
-const bin = {};
-export default bin;
+const binData = [];
+export default binData;

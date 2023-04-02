@@ -1,4 +1,4 @@
-const chess = {
+const chessData = {
     board: [
         [{}, {}, {}, {}, {}, {}, {}, {}],
         [{}, {}, {}, {}, {}, {}, {}, {}],
@@ -311,4 +311,4 @@ const chess = {
     ],
 };
 
-export default chess;
+export default chessData;

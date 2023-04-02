@@ -1,12 +1,17 @@
+import appsData from "./../data/appData.js";
+import bin from "./../data/binData.js";
+import { createFileHTML } from "./finderApp.js";
+import { renderBin } from "./recycleBinApp.js";
+
 export const createAppContainer = (name) => {
     const appContainer = document.createElement("section");
-    appContainer.classList.add(`allowed-area__${name.toLowerCase()}`);
-    appContainer.classList.add(`${name.toLowerCase()}`);
+    const nameLowerCase = name.toLowerCase();
+    appContainer.classList.add(`allowed-area__${nameLowerCase}`);
+    appContainer.classList.add(`${nameLowerCase}`);
     appContainer.classList.add(`apps`);
 
     const header = document.createElement("div");
-    header.classList.add(`${name.toLowerCase()}__header`);
-    header.classList.add(`app--header`);
+    header.classList.add(`${nameLowerCase}__header`, `app__header`);
     header.innerHTML = `
     <p>${name.split("-")[0]}</p>
     <div>
@@ -16,7 +21,7 @@ export const createAppContainer = (name) => {
     </div>
     `;
     const main = document.createElement("div");
-    main.classList.add(`${name.toLowerCase()}__main`);
+    main.classList.add(`${nameLowerCase}__main`);
 
     appContainer.append(header, main);
     return appContainer;
@@ -27,7 +32,9 @@ export const appHeaderControl = (app, data) => {
     minimize.forEach((btn) => {
         btn.addEventListener("click", (e) => {
             e.preventDefault();
-            document.querySelector(`.${data.name}`).style.zIndex = 0;
+            document.querySelector(
+                `.allowed-area__${data.name}`
+            ).style.zIndex = 0;
             data.isMinimized = !data.isMinimized;
             app.classList.add("hidden");
         });
@@ -115,4 +122,73 @@ export const moveApp = (app) => {
         app.addEventListener("mousedown", getMousePosition);
     }
     mainScreen.addEventListener("mouseleave", removeEventListeners);
+};
+
+export const openContextMenu = (
+    element,
+    index,
+    script = false,
+    text = "Move to bin"
+) => {
+    const mainScreen = document.querySelector(".main-screen__allowed-area");
+
+    const createContextMenu = (event) => {
+        const div = document.createElement("div");
+        div.classList.add("context-menu");
+        div.innerHTML = text;
+
+        div.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (script) {
+                script(index);
+            }
+        });
+
+        mainScreen.append(div);
+
+        const contextMenu = document.querySelector(".context-menu");
+        contextMenu.style.left = `${event.clientX}px`;
+        contextMenu.style.top = `${event.clientY - 15}px`;
+    };
+
+    element.addEventListener("contextmenu", (event) => {
+        event.preventDefault();
+
+        if (document.querySelector(".context-menu")) {
+            document.querySelector(".context-menu").remove();
+            createContextMenu(event);
+        } else {
+            createContextMenu(event);
+        }
+    });
+};
+
+export const removeContextMenu = () => {
+    const contextMenu = document.querySelector(".context-menu");
+
+    if (contextMenu) {
+        contextMenu.remove();
+    }
+};
+
+export const movePhotoToBin = (index) => {
+    const imgData = appsData[0].data.photos[index];
+    imgData.inBin = !imgData.inBin;
+    bin.push(imgData);
+
+    const binMain = document.querySelector(".bin-app__main");
+    if (binMain) {
+        const binMain = document.querySelector(".bin-app__main--imageCon");
+        binMain.innerHTML = "";
+        renderBin(bin);
+    }
+    const imageCon = document.querySelector(".main__imageCon");
+    imageCon.innerHTML = "";
+
+    appsData[0].data.photos.forEach((photo, index) => {
+        const inBin = photo.inBin;
+        if (!inBin) {
+            createFileHTML(photo, index);
+        }
+    });
 };

@@ -1,2 +1,2 @@
-const camera = {};
-export default camera;
+const cameraData = {};
+export default cameraData;

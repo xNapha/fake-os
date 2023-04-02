@@ -1,41 +1,60 @@
-import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
+import {
+    appHeaderControl,
+    createAppContainer,
+    moveApp,
+    openContextMenu,
+    movePhotoToBin,
+} from "./utility.js";
 import { openGalleryApp, replaceGalleryImage } from "./galleryApp.js";
-import { apps } from "./../data/appData.js";
+import appsData from "./../data/appData.js";
 
 export const openFinderApp = (finder) => {
     const mainScreen = document.querySelector(".main-screen__allowed-area");
+    // append default window container for the app
     mainScreen.appendChild(createAppContainer("finder-app"));
-    moveApp(document.querySelector(".allowed-area__finder-app"));
-    appHeaderControl(
-        document.querySelector(".allowed-area__finder-app"),
-        apps[0]
-    );
+    // allow the app to move on drag
+    const finderApp = document.querySelector(".allowed-area__finder-app");
+    moveApp(finderApp);
+    // customise the app header to the specified app
+    appHeaderControl(finderApp, appsData[0]);
 
+    // render the contents of the app
     renderFinder(finder);
 };
 
-const renderFinder = (finder) => {
-    const finderApp = document.querySelector(".finder-app__main");
+export const renderFinder = (finder) => {
+    const finderAppMain = document.querySelector(".finder-app__main");
+
     const finderNavigation = document.createElement("div");
     finderNavigation.innerHTML = "Photos";
     finderNavigation.classList.add("main", "main__navigation");
-    finderApp.appendChild(finderNavigation);
 
-    const finderMain = document.querySelector(".finder-app__main");
     const finderCon = document.createElement("div");
-    finderCon.classList.add("main");
-    finderCon.classList.add("main__finder");
-    finderMain.append(finderCon);
-    finder.photos.forEach((photo) => {
-        createFileHTML(photo);
+    finderCon.classList.add("main__imageCon");
+
+    finderAppMain.append(finderNavigation, finderCon);
+
+    finder.photos.forEach((photo, index) => {
+        const inBin = photo.inBin;
+        if (!inBin) {
+            createFileHTML(photo, index);
+        }
     });
 };
 
-const createFileHTML = (file) => {
-    const finderCon = document.querySelector(".main__finder");
+export const createFileHTML = (file, index) => {
+    const finderCon = document.querySelector(".main__imageCon");
+
     const div = document.createElement("div");
-    div.classList.add("finder", "finder__file");
-    div.innerHTML = `<img src="${file.imageSrc}" class="file file__icon"><p>${file.imageName}</p>`;
+    div.classList.add("imageCon__file");
+
+    const img = document.createElement("img");
+    img.setAttribute("src", file.imageSrc);
+    img.classList.add("file__icon");
+
+    const para = document.createElement("p");
+    para.textContent = file.imageName;
+    div.append(img, para);
 
     // open gallery app with photo showing
     div.addEventListener("dblclick", (e) => {
@@ -49,10 +68,7 @@ const createFileHTML = (file) => {
         }
     });
 
-    //open context menu, rename , delete;
-    div.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-    });
+    openContextMenu(img, index, movePhotoToBin);
 
     finderCon.append(div);
 };

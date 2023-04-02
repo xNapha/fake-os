@@ -52,6 +52,46 @@
   height: 100%;
   width: 100%;
 }
+.main-screen__allowed-area .app__header:hover {
+  cursor: pointer;
+}
+.main-screen__allowed-area .settings-bar-menu {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  width: 8rem;
+  height: 1.5rem;
+  z-index: 999;
+}
+.main-screen__allowed-area .specs__main ul {
+  text-decoration: none;
+  list-style: none;
+}
+.main-screen__allowed-area .specs__main ul li {
+  font-weight: bold;
+}
+.main-screen__allowed-area .specs__main ul li span {
+  font-weight: normal;
+  font-style: italic;
+}
+.main-screen__allowed-area .context-menu {
+  position: absolute;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+  width: 8rem;
+  height: 1.5rem;
+  z-index: 999;
+}
+.main-screen__allowed-area .context-menu:hover {
+  background-color: rgb(210, 210, 210);
+  cursor: pointer;
+}
 
 .chess-app {
   width: 30rem;
@@ -144,18 +184,18 @@
   background-color: white;
   border-radius: 5px;
 }
-.apps .app--header {
+.apps .app__header {
   display: flex;
   justify-content: space-between;
   padding: 0 5px;
   background-color: rgb(210, 210, 210);
   border-radius: 5px;
 }
-.apps .app--header div {
+.apps .app__header div {
   display: inherit;
   gap: 10px;
 }
-.apps .app--header div * {
+.apps .app__header div * {
   display: inherit;
   justify-content: center;
   align-items: center;
@@ -165,16 +205,16 @@
   font-size: 0.7rem;
   border-radius: 10px;
 }
-.apps .app--header div .expand {
+.apps .app__header div .expand {
   background-color: #36b507;
 }
-.apps .app--header div .minimize {
+.apps .app__header div .minimize {
   background-color: #edea26;
 }
-.apps .app--header div .close {
+.apps .app__header div .close {
   background-color: #eb2121;
 }
-.apps .app--header div *:hover {
+.apps .app__header div *:hover {
   cursor: pointer;
   filter: saturate(40%);
 }
@@ -206,11 +246,11 @@
   max-height: 100%;
 }
 .finder-app__main .main__navigation {
-  height: 2rem;
+  height: 1rem;
   width: 100%;
   background-color: rgb(230, 230, 230);
 }
-.finder-app__main .main__finder {
+.finder-app__main .main__imageCon {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   justify-self: center;
@@ -219,7 +259,7 @@
   height: 100%;
   overflow: auto;
 }
-.finder-app__main .main__finder .finder__file {
+.finder-app__main .main__imageCon .imageCon__file {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -227,21 +267,19 @@
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
 }
-.finder-app__main .main__finder .finder__file .file {
+.finder-app__main .main__imageCon .imageCon__file .file__icon {
   width: 50%;
-}
-.finder-app__main .main__finder .finder__file .file__icon {
   min-width: 7rem;
   min-height: 7rem;
   width: 40%;
   height: 100%;
   border-radius: 10px;
 }
-.finder-app__main .main__finder .finder__file p {
+.finder-app__main .main__imageCon .imageCon__file p {
   text-align: center;
   font-size: 10px;
 }
-.finder-app__main .main__finder .finder__file:hover {
+.finder-app__main .main__imageCon .imageCon__file:hover {
   cursor: pointer;
   background-color: rgb(240, 240, 240);
 }
@@ -271,13 +309,44 @@
 
 .bin-app__main {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: white;
+  max-height: 100%;
+  overflow: auto;
 }
-.bin-app__main .main {
-  height: 10rem;
-  background-color: white;
+.bin-app__main .bin-app__main--imageCon {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-self: center;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.bin-app__main .bin-app__main--imageCon .imageCon__file {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+}
+.bin-app__main .bin-app__main--imageCon .imageCon__file .file__icon {
+  width: 50%;
+  min-width: 7rem;
+  min-height: 7rem;
+  width: 40%;
+  height: 100%;
+  border-radius: 10px;
+}
+.bin-app__main .bin-app__main--imageCon .imageCon__file p {
+  text-align: center;
+  font-size: 10px;
+}
+.bin-app__main .bin-app__main--imageCon .imageCon__file:hover {
+  cursor: pointer;
+  background-color: rgb(240, 240, 240);
 }
 
 .gallery-app {

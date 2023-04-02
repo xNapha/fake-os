@@ -2,14 +2,15 @@
 export const addToDock = (app) => {
     const dockCon = document.querySelector(".dock__container");
     const appIconContainer = document.createElement("div");
+    const allowedAreaApp = `.allowed-area__${app.name}`;
     appIconContainer.addEventListener("click", (e) => {
         e.preventDefault();
-        if (!document.querySelector(`.${app.name}`)) {
+        if (!document.querySelector(allowedAreaApp)) {
             app.script(app.data);
-        } else if (app.isMinimized || document.querySelector(`.${app.name}`)) {
+        } else if (app.isMinimized || document.querySelector(allowedAreaApp)) {
             // show app if miinimized
-            document.querySelector(`.${app.name}`).classList.toggle("hidden");
-            document.querySelector(`.${app.name}`).style.zIndex = 0;
+            document.querySelector(allowedAreaApp).classList.toggle("hidden");
+            document.querySelector(allowedAreaApp).style.zIndex = 0;
             app.isMinimized = !app.isMinimized;
         }
     });

@@ -10,5 +10,47 @@
         top: 1rem;
         height: 100%;
         width: 100%;
+        .app__header:hover {
+            cursor: pointer;
+        }
+        .settings-bar-menu {
+            position: absolute;
+            background-color: white;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            width: 8rem;
+            height: 1.5rem;
+            z-index: 999;
+        }
+        .specs__main {
+            ul {
+                text-decoration: none;
+                list-style: none;
+                li {
+                    font-weight: bold;
+                    span {
+                        font-weight: normal;
+                        font-style: italic;
+                    }
+                }
+            }
+        }
+        .context-menu {
+            position: absolute;
+            background-color: white;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px;
+            width: 8rem;
+            height: 1.5rem;
+            z-index: 999;
+        }
+        .context-menu:hover {
+            background-color: rgba(210, 210, 210, 1);
+            cursor: pointer;
+        }
     }
 }

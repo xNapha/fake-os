@@ -1,23 +1,25 @@
 import currentTime from "./scripts/dateTime.js";
-import { apps } from "./data/appData.js";
+import appsData from "./data/appData.js";
 import { addToDock } from "./scripts/dock.js";
 import { renderToolBar } from "./scripts/settingsBar.js";
-import { toolBarData } from "./data/settingsBarData.js";
+import settingsBarData from "./data/settingsBarData.js";
+import { removeContextMenu } from "./scripts/utility.js";
+import { removeSettingsMenu } from "./scripts/settingsBar.js";
 // run clock function
 currentTime();
 //  run clock function at every 1000 milliseconds
 setInterval(currentTime, 1000);
 
-try {
-    apps.forEach((app) => {
-        addToDock(app);
-    });
-} catch (err) {
-    console.warn(err);
-}
+appsData.forEach(addToDock);
 
-try {
-    renderToolBar(toolBarData);
-} catch (err) {
-    console.warn(err);
-}
+renderToolBar(settingsBarData);
+
+const mainScreen = document.querySelector(".main-screen");
+mainScreen.addEventListener("click", () => {
+    removeContextMenu();
+    removeSettingsMenu();
+});
+mainScreen.addEventListener("auxclick", () => {
+    removeContextMenu();
+    removeSettingsMenu();
+});

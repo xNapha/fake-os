@@ -1,26 +1,27 @@
 import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
-import { apps } from "./../data/appData.js";
+import appsData from "./../data/appData.js";
 import gallery from "./../data/galleryData.js";
 
 export const openGalleryApp = (photo = gallery) => {
     const mainScreen = document.querySelector(".main-screen__allowed-area");
+    // append default window container for the app
     mainScreen.appendChild(createAppContainer("gallery-app"));
-    moveApp(document.querySelector(".allowed-area__gallery-app"));
-    appHeaderControl(
-        document.querySelector(".allowed-area__gallery-app"),
-        apps[3]
-    );
-    // create a gallery container
+    // allow the app to move on drag
+    const galleryApp = document.querySelector(".allowed-area__gallery-app");
+    moveApp(galleryApp);
+    // customise the app header to the specified app
+    appHeaderControl(galleryApp, appsData[3]);
+    // render the contents of the app
     renderGallery(photo);
 };
-
+// replace the current image with another one
 export const replaceGalleryImage = (photoInfo) => {
     const galleryMain = document.querySelector(".gallery-app__main");
     galleryMain.innerHTML = `<img src="${
         photoInfo.imageSrc
     }" class="${photoInfo.classList.join(" ")}"/>`;
 };
-
+// if gallery is opened from the dock fetch a random cat photo to occupy the space
 const catPhoto = async (galleryMain, photoInfo) => {
     const json = await fetch(photoInfo.api);
     const response = await json.json();
@@ -29,6 +30,7 @@ const catPhoto = async (galleryMain, photoInfo) => {
     }" class="${photoInfo.classList.join(" ")}"/>`;
 };
 
+// render a larger image in the gallery
 const renderGallery = (photoInfo) => {
     const galleryMain = document.querySelector(".gallery-app__main");
     if (photoInfo.api) {

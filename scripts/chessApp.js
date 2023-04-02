@@ -1,20 +1,20 @@
 import { appHeaderControl, createAppContainer, moveApp } from "./utility.js";
-import { apps } from "./../data/appData.js";
+import appsData from "./../data/appData.js";
 
 export const openChessApp = (chess) => {
     const mainScreen = document.querySelector(".main-screen__allowed-area");
+    // append default window container for the app
     mainScreen.appendChild(createAppContainer("chess-app"));
-    moveApp(document.querySelector(".allowed-area__chess-app"));
-    appHeaderControl(
-        document.querySelector(".allowed-area__chess-app"),
-        apps[1]
-    );
+    // allow the app to move on drag
+    const chessApp = document.querySelector(".allowed-area__chess-app");
+    moveApp(chessApp);
+    // customise the app header to the specified app
+    appHeaderControl(chessApp, appsData[1]);
 
     const chessMain = document.querySelector(".chess-app__main");
     // create a board container to hold the chess pieces
     const boardCon = document.createElement("div");
-    boardCon.classList.add("main");
-    boardCon.classList.add("main__chess-board");
+    boardCon.classList.add("main", "main__chess-board");
 
     chessMain.append(boardCon);
     renderBoard(populateBoardArr(chess.pieces, chess));
@@ -23,16 +23,16 @@ export const openChessApp = (chess) => {
 // render board from an array
 const renderBoard = (chess) => {
     const boardCon = document.querySelector(".main__chess-board");
+    const chessPieceImg = (imageSrc, color) =>
+        `<img src ="${imageSrc}" class="piece piece--${color}"/>`;
     for (let x = 0; x < chess.board.length; x++) {
         for (let y = 0; y < chess.board[x].length; y++) {
             const div = chess.board[y][x].html;
-            if (chess.board[y][x].piece && chess.board[y][x].piece.isWhite) {
-                div.innerHTML = `<img src ="${chess.board[y][x].piece.iconSrc}" class="piece piece--white"/>`;
-            } else if (
-                chess.board[y][x].piece &&
-                !chess.board[y][x].piece.isWhite
-            ) {
-                div.innerHTML = `<img src ="${chess.board[y][x].piece.iconSrc}" class="piece piece--black"/>`;
+            const chessPiece = chess.board[y][x].piece;
+            if (chessPiece && chessPiece.isWhite) {
+                div.innerHTML = chessPieceImg(chessPiece.iconSrc, "white");
+            } else if (chessPiece && !chessPiece.isWhite) {
+                div.innerHTML = chessPieceImg(chessPiece.iconSrc, "black");
             } else {
                 div.innerHTML = "";
             }
@@ -104,10 +104,10 @@ const createCellObject = (html, x, y) => {
 
 // check position on board if there is a piece save location and then place piece at the next place clicked
 const holdPiece = (x, y, chess) => {
-    const isTrue = chess.board[x][y].piece;
-    if (isTrue) {
-        chess.heldPiece = chess.board[x][y].piece;
-        chess.board[x][y].piece = false;
+    const chessPiece = chess.board[x][y].piece;
+    if (chessPiece) {
+        chess.heldPiece = chessPiece;
+        chessPiece = false;
     }
     // validMoves(board.heldPiece, board);
     return chess, renderBoard(chess);
@@ -116,10 +116,10 @@ const holdPiece = (x, y, chess) => {
 // on mouse up place piece that is in hand
 const placePiece = (x, y, chess) => {
     const heldPiece = chess.heldPiece;
+    const chessPiece = chess.board[x][y].piece;
     if (heldPiece) {
-        // console.log(validMoves(heldPiece, board), "valid");
-        chess.board[x][y].piece = heldPiece;
-        chess.board[x][y].piece.position = { x: x, y: y };
+        chessPiece = heldPiece;
+        chessPiece.position = { x: x, y: y };
     }
     chess.heldPiece = false;
     return chess, renderBoard(chess);
@@ -143,14 +143,3 @@ const placePiece = (x, y, chess) => {
 const highlightMove = (cellHTML) => {
     return cellHTML.classList.toggle("valid-moves");
 };
-/*
-different types of chess pieces
-pawn
-knight
-bishop
-rook
-king
-queen
-
-
-*/

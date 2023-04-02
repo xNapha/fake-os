@@ -3,20 +3,20 @@ import { openBinApp } from "../scripts/recycleBinApp.js";
 import { openFinderApp } from "../scripts/finderApp.js";
 import { openCameraApp } from "../scripts/cameraApp.js";
 import { openGalleryApp } from "../scripts/galleryApp.js";
-import chess from "./chessBoard.js";
-import finder from "./finderData.js";
-import camera from "./cameraData.js";
-import gallery from "./galleryData.js";
-import bin from "./binData.js";
+import chessData from "./chessBoard.js";
+import finderData from "./finderData.js";
+import cameraData from "./cameraData.js";
+import galleryData from "./galleryData.js";
+import binData from "./binData.js";
 
-export const apps = [
+const appsData = [
     {
         id: 0,
         name: "finder-app",
         isMinimized: false,
         iconSrc: `./assets/folder-solid.svg`,
         script: openFinderApp,
-        data: finder,
+        data: finderData,
         classList: ["app__icons"],
         toolBar: [],
     },
@@ -26,7 +26,7 @@ export const apps = [
         isMinimized: false,
         iconSrc: `./assets/chess-icons/chess-solid.svg`,
         script: openChessApp,
-        data: chess,
+        data: chessData,
         classList: ["app__icons"],
         toolBar: [],
     },
@@ -36,7 +36,7 @@ export const apps = [
         isMinimized: false,
         iconSrc: `./assets/video-solid.svg`,
         script: openCameraApp,
-        data: camera,
+        data: cameraData,
         classList: ["app__icons"],
         toolBar: [],
     },
@@ -46,7 +46,7 @@ export const apps = [
         isMinimized: false,
         iconSrc: `./assets/image-solid.svg`,
         script: openGalleryApp,
-        data: gallery,
+        data: galleryData,
         classList: ["app__icons"],
         toolBar: [],
     },
@@ -56,8 +56,10 @@ export const apps = [
         isMinimized: false,
         iconSrc: `./assets/trash-can-solid.svg`,
         script: openBinApp,
-        data: bin,
+        data: binData,
         classList: ["app__icons"],
         toolBar: [],
     },
 ];
+
+export default appsData;
