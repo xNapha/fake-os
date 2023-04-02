@@ -43,13 +43,13 @@ const dropDown = (element, index) => {
             e.preventDefault();
             const computerSpecs = settingsBarData[index].computerSpecs;
             if (computerSpecs) {
-                mainScreen.append(createAppContainer("specs"));
+                mainScreen.append(createAppContainer("app-whole"));
                 const specsInfo = document.querySelector(
-                    ".allowed-area__specs"
+                    ".allowed-area__app-whole"
                 );
                 moveApp(specsInfo);
-                appHeaderControl(specsInfo, "specs");
-                openComputerSpecs("specs");
+                appHeaderControl(specsInfo, computerSpecs);
+                openComputerSpecs(computerSpecs);
             }
         });
 
@@ -76,7 +76,7 @@ const dropDown = (element, index) => {
 };
 
 const openComputerSpecs = (info) => {
-    const specs = document.querySelector(".specs__main");
+    const specs = document.querySelector(".app-whole__main");
 
     specs.innerHTML = `
     <ul>

@@ -66,14 +66,14 @@
   height: 1.5rem;
   z-index: 999;
 }
-.main-screen__allowed-area .specs__main ul {
+.main-screen__allowed-area .app-whole__main ul {
   text-decoration: none;
   list-style: none;
 }
-.main-screen__allowed-area .specs__main ul li {
+.main-screen__allowed-area .app-whole__main ul li {
   font-weight: bold;
 }
-.main-screen__allowed-area .specs__main ul li span {
+.main-screen__allowed-area .app-whole__main ul li span {
   font-weight: normal;
   font-style: italic;
 }

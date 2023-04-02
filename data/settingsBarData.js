@@ -6,7 +6,7 @@ const settingsBarData = [
         iconSrc: "./assets/toolBar/apple-whole-solid.svg",
         dropDownMenu: "Computer Info",
         computerSpecs: {
-            name: "App-whole",
+            name: "app-whole",
             processor: "2.3Ghz Dual-Core Intel Core i5",
             graphics: "Intel Iris Plus Graphics",
             memory: "8 GB 2133 MHz LPDDR3",

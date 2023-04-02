@@ -17,6 +17,7 @@ export const openChessApp = (chess) => {
     boardCon.classList.add("main", "main__chess-board");
 
     chessMain.append(boardCon);
+    // render the contents of the app
     renderBoard(populateBoardArr(chess.pieces, chess));
 };
 
