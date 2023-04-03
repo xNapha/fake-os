@@ -43,9 +43,9 @@ const dropDown = (element, index) => {
             e.preventDefault();
             const computerSpecs = settingsBarData[index].computerSpecs;
             if (computerSpecs) {
-                mainScreen.append(createAppContainer("app-whole"));
+                mainScreen.append(createAppContainer("specs"));
                 const specsInfo = document.querySelector(
-                    ".allowed-area__app-whole"
+                    ".allowed-area__specs"
                 );
                 moveApp(specsInfo);
                 appHeaderControl(specsInfo, computerSpecs);
@@ -76,11 +76,11 @@ const dropDown = (element, index) => {
 };
 
 const openComputerSpecs = (info) => {
-    const specs = document.querySelector(".app-whole__main");
+    const specs = document.querySelector(".specs__main");
 
     specs.innerHTML = `
     <ul>
-        <li>Name: <span>${info.name}</span></li>
+        <li>Name: <span>${info.computerName}</span></li>
         <li>Processor: <span>${info.processor}</span></li>
         <li>Graphics: <span>${info.graphics}</span></li>
         <li>Memory: <span>${info.memory}</span></li>
