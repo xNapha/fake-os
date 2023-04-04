@@ -255,7 +255,7 @@ const chessData = {
             iconSrc: "./assets/chess-icons/chess-knight-solid.svg",
         },
         {
-            id: 272,
+            id: 27,
             type: "bishop",
             isWhite: true,
             position: { x: 2, y: 7 },

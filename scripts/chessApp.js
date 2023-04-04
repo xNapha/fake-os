@@ -108,7 +108,7 @@ const holdPiece = (x, y, chess) => {
     const chessPiece = chess.board[x][y].piece;
     if (chessPiece) {
         chess.heldPiece = chessPiece;
-        chessPiece = false;
+        chess.board[x][y].piece = false;
     }
     // validMoves(board.heldPiece, board);
     return chess, renderBoard(chess);
@@ -119,8 +119,8 @@ const placePiece = (x, y, chess) => {
     const heldPiece = chess.heldPiece;
     const chessPiece = chess.board[x][y].piece;
     if (heldPiece) {
-        chessPiece = heldPiece;
-        chessPiece.position = { x: x, y: y };
+        chess.board[x][y].piece = heldPiece;
+        chess.board[x][y].position = { x: x, y: y };
     }
     chess.heldPiece = false;
     return chess, renderBoard(chess);
